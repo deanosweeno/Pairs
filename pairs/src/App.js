@@ -1,9 +1,12 @@
+
 import './App.css';
 import { useEffect, useState } from 'react'
 import SingleCard from './components/SingleCard'
+import Popup from './components/Popup'
 const Imgs = [{ "src": "/img/01.jpg", matched: false }, { "src": "/img/02.jpg", matched: false }, { "src": "/img/03.jpg", matched: false }] //will call properties from external array here
 function App() 
 {
+  const [buttonPopup, setButtonPopup] = useState(false);
   const [turns, setTurns] = useState(0)
   const [cards, setCards] = useState([])
   const [choiceOne, setChoiceOne] = useState(null)
@@ -50,9 +53,11 @@ function App()
 
   return (
     <div className="App">
-      <h1>Pairs</h1>
-      <button onClick={shuffle}>Retry</button>
-
+      <h1>Project Extinction</h1>
+      <button onClick={() => setButtonPopup(true)}>Open Pairs</button> 
+      
+      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>   
+      <button onClick={shuffle}>Retry</button> 
       <div className="Grid">
         {cards.map(card => (
           <SingleCard 
@@ -65,6 +70,9 @@ function App()
         ))}
       </div>
       <p>Turns: {turns}</p>
+
+      </Popup>  
+      
     </div>
   );
 }
