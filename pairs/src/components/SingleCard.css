@@ -7,3 +7,12 @@
     border: 2px solid #fff;
     border-radius: 6px;
 }
+
+.card .top{
+    transform: rotateY(90deg);
+    position: absolute;
+}
+.flipped .top{
+    transform: rotateY(0deg);
+    
+}
